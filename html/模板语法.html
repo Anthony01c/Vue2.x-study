@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="app">
+    <h2>1.双大括号表达式(插值)</h2>
+    <p>---{{msg}}--</p>
+    <p>---{{msg.toUpperCase()}}---</p>
+
+    <h2>2.指令一：强制数据绑定</h2>
+
+    <h2>3.指令二：绑定事件监听</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'I love you'
+        }
+    })
+</script>
+</body>
+</html>
