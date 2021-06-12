@@ -7,7 +7,7 @@
     模板页面：html+js
     js以什么形式存在？
         指令：如v-model,是vue自定义标签属性，属性值是一个js的表达式
-        插值：双大括号表达式，如{{msg}},其为了显示数据
+        插值：双大括号表达式，如{{msg}},其为了显示数据，只能写在文本标签体中
     -->
 </head>
 
@@ -15,15 +15,17 @@
 <div id="test">
   <input type="text" v-model="msg">
   <p>Hello {{msg}}</p>
+    <p>{{msg}}</p>
 </div>
+
 <script src="../js/vue.js"></script>
 <script type="text/javascript">
-  new Vue({
-    el:'#test',
-    data:{
+  new Vue({//配置对象：如（el），属性名是一些特殊的名称 每一个属性就是一个选项
+    el:'#test', //选择字符串  此行写为div也可  用于指定模板的根元素
+    data:{// 包含一些数据属性的对象 ===》 为模板提供数据
       msg:'Lukas'
     }
-  })
+  })//.$mount('#test')
 </script>
 </body>
 </html>
