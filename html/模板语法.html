@@ -12,17 +12,35 @@
     <p>---{{msg.toUpperCase()}}---</p>
 
     <h2>2.指令一：强制数据绑定</h2>
+    <!--属性值是一个动态的值-->
+
+    <a href="url">Work</a><br>
+    <a v-bind:href="url">baidu</a><br>
+    <a :href="url">baidu</a>
 
     <h2>3.指令二：绑定事件监听</h2>
+    <button v-on:click="test">test1</button>
+    <button @click="test1">test1</button>
 </div>
 <script src="../js/vue.js"></script>
 <script type="text/javascript">
     new Vue({
         el:'#app',
         data:{
-            msg:'I love you'
-        }
+            msg:'I love you',
+            url:'https://www.baidu.com'
+        },
+        methods:{
+            test(e){
+                alert(e.target.innerText)
+            },
+            test1(){
+                alert('我爱你!')
+            }
+        },
     })
+    /*function fn(){}//函数是语句
+    let fn = function (){}// 函数为表达式*/
 </script>
 </body>
 </html>
