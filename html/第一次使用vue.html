@@ -15,17 +15,28 @@
 <div id="test">
   <input type="text" v-model="msg">
   <p>Hello {{msg}}</p>
-    <p>{{msg}}</p>
-</div>
 
+</div>
+<p id="test2">{{msg}}</p>
 <script src="../js/vue.js"></script>
 <script type="text/javascript">
-  new Vue({//配置对象：如（el），属性名是一些特殊的名称 每一个属性就是一个选项
+  const vm = new Vue({//配置对象：如（el），属性名是一些特殊的名称 每一个属性就是一个选项
     el:'#test', //选择字符串  此行写为div也可  用于指定模板的根元素
     data:{// 包含一些数据属性的对象 ===》 为模板提供数据
       msg:'Lukas'
     }
   })//.$mount('#test')
+
+  setTimeout(()=>{
+      vm.msg = 'Anthony' //数据代理，界面会更新
+  },1000)
+
+
+  new Vue({
+      data:{
+          msg: 'tommy'
+      }
+  }).$mount('#test2')//一个Root标签对应一个Vue实例
 </script>
 </body>
 </html>
