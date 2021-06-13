@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp">
+    <p>{{msg}}</p>
+</div>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-plugins.js"></script>
+<script type="text/javascript">
+    Vue.use(MyPlugin)
+    console.log(MyPlugin)
+
+    Vue.myGlobalMethod()
+
+    new Vue({
+        el:'#exp',
+        data(){
+            return {
+                msg:'--------------------'
+            }
+        }
+    })
+</script>
+</body>
+</html>
