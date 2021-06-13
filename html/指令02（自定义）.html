@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="exp">
+    <p v-text="msg"></p>
+    <p v-upper-text="msg"></p>
+    <p v-lower-text="msg"></p>
+</div>
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    Vue.directive('upper-text',function (el,binding){
+        /*el:指令属性所在的标签元素对象,可在其后为el添加你想要的效果
+        * binding:包含指令相关数据的对象
+        * binding中包含expression:"msg"，name:"指令名",value:"msg的内容"
+        * */
+        el.innerText = binding.value.toUpperCase()
+    }
+    )
+    new Vue({
+        el:'#exp',
+        data(){
+            return{
+                msg:'hello'
+            }
+        },
+        //定义局部指令(仅对当前vm有效)
+        directives:{
+            'lower-text':function (el,binding){
+        el.innerText = binding.value.toLowerCase()
+    }
+        }
+    })
+</script>
+</body>
+</html>
