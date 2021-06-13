@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="test">
+    <h2>显示格式化的日期时间</h2>
+    <p>{{startTime}}</p>
+    <p>{{startTime | filterTime}}</p>
+    <p>{{startTime | filterTime('YYYY-MM-DD')}}</p>
+    <p>{{startTime | filterTime('HH:mm:ss')}}</p>
+</div>
+<script src="../js/vue.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.js"></script>
+<script type="text/javascript">
+    //定义过滤器
+    Vue.filter('filterTime',function (value,formaStr='YYYY-MM-DD HH:mm:ss'){//value是被处理的数据
+        console.log(value)
+        return moment(value).format(formaStr);
+    })
+    new Vue({
+        el:'#test',
+        data(){
+            return{
+                startTime:Date.now()
+            }
+        }
+    })
+</script>
+</body>
+</html>
