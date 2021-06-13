@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="demo">
+    <form action="/xxx" @submit.prevent="register">
+        <span>用户名：</span>
+        <input type="text" v-model="user.userName"><br>
+
+        <span>密码：</span>
+        <input type="password" v-model="user.pwd"><br>
+
+        <span>性别：</span>
+        <input type="radio" id="female" v-model="user.sex" value="女">
+        <label for="female">女</label>
+        <input type="radio" id="male" v-model="user.sex" value="男">
+        <label for="male">男</label><br>
+
+        <span>爱好:</span>
+        <input type="checkbox" id="basket" v-model="user.likes" value="basket">
+        <label for="basket">篮球</label>
+        <input type="checkbox" id="foot"  v-model="user.likes" value="foot">
+        <label for="foot">足球</label>
+        <input type="checkbox" id="pingpang"  v-model="user.likes" value="pingpang">
+        <label for="pingpang">乒乓球</label><br>
+
+        <span>城市:</span>
+        <select v-model="user.cityId">
+            <option value="">未选择</option>
+            <option :value="city.id" v-for="(city,index) in allCitys" :key="city.id">{{city.name}}</option>
+        </select><br>
+        <span>介绍：</span>
+        <textarea name="" id="" cols="30" rows="10" v-model="user.info"></textarea><br>
+        <input type="submit" value="注册">
+    </form>
+</div>
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el:'#demo',
+        data(){
+            return{
+                user:{
+                    userName:'Lukas',
+                    pwd:'',
+                    sex:'女',
+                    likes:['foot'],
+                    cityId:"2",
+                    info:'aaaa',
+                },
+                allCitys:[
+                    {id:1,name:'BJ'},
+                    {id:2,name:'GZ'},
+                    {id:3,name:'SH'},
+                    {id:4,name:'GZ'},
+                ],
+
+            }
+        },
+        methods:{
+            register(){
+                alert('提交了'+ JSON.stringify(this.user))
+            }
+        }
+    })
+</script>
+</body>
+</html>
