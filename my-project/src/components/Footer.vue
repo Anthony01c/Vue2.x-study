@@ -26,7 +26,8 @@ export default {
     },
     isCheckAll:{
       get(){
-        return this.todos.length === this.compSize //读属性值就会自动调用对应的getter方法
+        return this.todos.length === this.compSize  && this.compSize > 0
+        //读属性值就会自动调用对应的getter方法
       },
      set(value){
       this.checkAll(value)

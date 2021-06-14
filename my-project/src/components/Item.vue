@@ -32,7 +32,7 @@ export default {
         return this.todo.completed
       },
       set(value){
-          this.updateTodo(todo,value)
+          this.updateTodo(this.todo,value)
       }
     },
 

@@ -3,11 +3,12 @@
     <div class="todo-wrap">
         <Header :addTodo="addTodo"/>
         <List :todos="todos"
-              :deleteTodo="deleteTodo"/>
+              :deleteTodo="deleteTodo"
+              :updateTodo="updateTodo"/>
         <Footer :todos="todos"
                 :clearCompletedTodos="clearCompletedTodos"
                 :checkAll="checkAll"
-                :updateTodo="updateTodo"/>
+                />
     </div>
   </div>
 </template>
