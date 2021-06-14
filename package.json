@@ -1,0 +1,8 @@
+{
+  "name": "Vue 2.x",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Anthony01c/Vue2.x-study.git",
+  "author": "Lukas <yangmingdada@gmail.com>",
+  "license": "MIT"
+}
