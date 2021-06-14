@@ -12,6 +12,7 @@
 import Header from './components/Header'
 import Footer from "./components/Footer";
 import List from "./components/List";
+import {saveTodos,readTodos} from "./utils/stroageUtils";
 
 export default {
   name: 'app',
@@ -32,11 +33,25 @@ export default {
   components: {Footer, List, Header},
   data () {
     return {
-      todos:[
-        {id:1,title:'A',completed:false},
-        {id:2,title:'B',completed:false},
-        {id:3,title:'C',completed:false},
-      ]
+      todos:[]
+    }
+  },
+  mounted() {
+    //模拟异步
+    setTimeout(()=>{
+      //读取local中保存的todos，更新数据
+      this.todos = readTodos()
+    },1000);
+  },
+  watch:{
+    todos:{
+      deep:true,//深度监视（本身和内部所有层次的数据）
+      /*handler(value){
+        //将todos保存到local中（以json格式）
+        saveTodos(value);
+      }*/
+      handler:saveTodos
+
     }
   }
 }
