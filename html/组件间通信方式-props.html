@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+使用组件标签时 可以传值
+如<my-component name='tom' :age='3' :set-time='set-time'/>
+
+在定义组件时
+ 1.在组件中声明所有的props
+  方式1：只指定名称
+    props:['name','age','setTime']
+  方式2：指定名称和类型
+    props:{
+        name:String,
+        age:Number,
+        setTime:Function
+        }
+   方式3:指定名称/类型/必要性/默认值
+        props:{
+         name:{type:String,required:true,default}
+
+
+需要注意的是
+  props传值方式用于父组件向子组件传递数据
+  所有标签属性都会成为组件对象的属性，模板页面可以直接引用
+  问题
+        如果需要向非后代传递数据必须逐层传递
+        兄弟组件也不能直接props通信，必须借助父组件才可以
+-->
+</body>
+</html>
