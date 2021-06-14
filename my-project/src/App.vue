@@ -2,8 +2,12 @@
   <div class="todo-container">
     <div class="todo-wrap">
         <Header :addTodo="addTodo"/>
-        <List v-bind:todos="todos" :deleteTodo="deleteTodo"/>
-        <Footer :todos="todos" :clearCompletedTodos="clearCompletedTodos" :checkAll="checkAll"/>
+        <List :todos="todos"
+              :deleteTodo="deleteTodo"/>
+        <Footer :todos="todos"
+                :clearCompletedTodos="clearCompletedTodos"
+                :checkAll="checkAll"
+                :updateTodo="updateTodo"/>
     </div>
   </div>
 </template>
@@ -28,6 +32,9 @@ export default {
     },
     checkAll(isCheckAll){
       this.todos.forEach(todo => todo.completed = isCheckAll)
+    },
+    updateTodo(todo,isCheck){
+      todo.completed = isCheck
     }
   },
   components: {Footer, List, Header},

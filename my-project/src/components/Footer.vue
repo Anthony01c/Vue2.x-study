@@ -6,7 +6,8 @@
     <span>
           <span>已完成{{compSize}}</span> / {{ todos.length }}
         </span>
-    <button class="btn btn-danger" v-show="compSize>0" @click="clearCompletedTodos">清除已完成任务</button>
+    <button class="btn btn-danger" v-show="compSize>0"
+            @click="clearCompletedTodos">清除已完成任务</button>
   </div>
 </template>
 
