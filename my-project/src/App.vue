@@ -5,10 +5,16 @@
       <Header ref='header'/>
       <List :todos="todos"
               :updateTodo="updateTodo"/>
-        <Footer :todos="todos"
-                :clearCompletedTodos="clearCompletedTodos"
-                :checkAll="checkAll"
-                />
+        <Footer>
+          <!-- 在父组件中解析好之后传入的-->
+          <input type="checkbox" v-model="isCheckAll" slot="left"/>
+          <span slot="middle">
+          <span>已完成{{compSize}}</span> / {{ todos.length }}
+        </span>
+
+          <button class="btn btn-danger" v-show="compSize" slot="right" >0"
+                  @click="clearCompletedTodos">清除已完成任务</button>
+        </Footer>
     </div>
   </div>
 </template>
@@ -42,6 +48,20 @@ export default {
   data () {
     return {
       todos:[]
+    }
+  },
+  computed:{
+    compSize(){
+      return this.todos.reduce((preTotal,todo,index)=>preTotal+(todo.completed ? 1 : 0),0)
+    },
+    isCheckAll:{
+      get(){
+        return this.todos.length === this.compSize  && this.compSize > 0
+        //读属性值就会自动调用对应的getter方法
+      },
+      set(value){
+        this.checkAll(value)
+      }
     }
   },
   mounted() {

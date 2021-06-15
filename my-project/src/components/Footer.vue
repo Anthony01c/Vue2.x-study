@@ -1,39 +1,22 @@
 <template>
   <div class="todo-footer">
     <label>
-      <input type="checkbox" v-model="isCheckAll"/>
+<!--      <input type="checkbox" v-model="isCheckAll"/>-->
+      <slot name="left" ></slot>
     </label>
-    <span>
+<!--    <span>
           <span>已完成{{compSize}}</span> / {{ todos.length }}
-        </span>
-    <button class="btn btn-danger" v-show="compSize>0"
-            @click="clearCompletedTodos">清除已完成任务</button>
+        </span>-->
+    <slot name="middle"></slot>
+<!--    <button class="btn btn-danger" v-show="compSize>0"
+            @click="clearCompletedTodos">清除已完成任务</button>-->
+    <slot name="right"></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: "Footer",
-  props:{
-    todos:Array,
-    clearCompletedTodos:Function,
-    checkAll:Function
-
-  },
-  computed:{
-    compSize(){
-      return this.todos.reduce((preTotal,todo,index)=>preTotal+(todo.completed ? 1 : 0),0)
-    },
-    isCheckAll:{
-      get(){
-        return this.todos.length === this.compSize  && this.compSize > 0
-        //读属性值就会自动调用对应的getter方法
-      },
-     set(value){
-      this.checkAll(value)
-     }
-    }
-  }
 }
 </script>
 
