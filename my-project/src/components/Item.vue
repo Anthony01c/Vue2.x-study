@@ -13,11 +13,11 @@
 在监听回调中，更新数据
 -->
 <script>
+import PubSub from 'pubsub-js'
 export default {
   props:{//声明属性的属性名和属性值的类型
     todo:Object,
     index:Number,
-    updateTodo:Function
   },
   data(){
     return{
@@ -31,7 +31,8 @@ export default {
         return this.todo.completed
       },
       set(value){
-          this.updateTodo(this.todo,value)
+          //this.updateTodo(this.todo,value)
+        PubSub.publish('updateTodo', {todo:this.todo, isCheck:value})
       }
     },
 

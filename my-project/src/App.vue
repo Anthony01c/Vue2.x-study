@@ -4,7 +4,7 @@
 <!--       <Header @addTodo="addTodo"/>   &lt;!&ndash; //给当前的header对象绑定监听&ndash;&gt;-->
       <Header ref='header'/>
       <List :todos="todos"
-              :updateTodo="updateTodo"/>
+              />
         <Footer>
           <!-- 在父组件中解析好之后传入的-->
           <input type="checkbox" v-model="isCheckAll" slot="left"/>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
 import Header from './components/Header'
 import Footer from "./components/Footer";
 import List from "./components/List";
@@ -65,6 +66,12 @@ export default {
     }
   },
   mounted() {
+
+    //订阅消息
+    PubSub.subscribe('updateTodo',(msg,{todo,isCheck})=>{
+      this.updateTodo(todo,isCheck)
+    }),
+      //给Header绑定事件监听
     this.$refs.header.$on('addTodo',this.addTodo)
 
     //通过vm来绑定事件监听
