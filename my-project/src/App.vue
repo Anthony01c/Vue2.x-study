@@ -4,7 +4,6 @@
 <!--       <Header @addTodo="addTodo"/>   &lt;!&ndash; //给当前的header对象绑定监听&ndash;&gt;-->
       <Header ref='header'/>
       <List :todos="todos"
-              :deleteTodo="deleteTodo"
               :updateTodo="updateTodo"/>
         <Footer :todos="todos"
                 :clearCompletedTodos="clearCompletedTodos"
@@ -47,6 +46,9 @@ export default {
   },
   mounted() {
     this.$refs.header.$on('addTodo',this.addTodo)
+
+    //通过vm来绑定事件监听
+    this.vm.$on('deletedTodo',this.deleteTodo)
     //模拟异步
     setTimeout(()=>{
       //读取local中保存的todos，更新数据

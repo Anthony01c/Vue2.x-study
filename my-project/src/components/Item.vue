@@ -16,7 +16,6 @@
 export default {
   props:{//声明属性的属性名和属性值的类型
     todo:Object,
-    deleteTodo:Function,
     index:Number,
     updateTodo:Function
   },
@@ -49,7 +48,8 @@ export default {
     },
     deleteNode(){
       if (window.confirm('你确定要删除么？')){
-        this.deleteTodo(this.index)
+        //通过vm对象分发事件
+        this.vm.$emit('deletedTodo',this.index)
       }
     }
   }
