@@ -65,6 +65,10 @@ export default {
       handler:saveTodos
 
     }
+  },
+  beforeDestroy() {
+    this.$refs.header.$off('addTodo')
+    this.vm.$off('deletedTodo')
   }
 }
 </script>
