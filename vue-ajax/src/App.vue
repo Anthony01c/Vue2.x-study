@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'app',
   data () {
@@ -19,7 +20,12 @@ export default {
   },
   mounted() {
     //利用vue-resource发送ajax请求获取数据
-    this.$http.get('https://api.github.com/search/repositories?q=r&sort=stars')
+    axios.get('https://api.github.com/search/repositories',{
+      params:{
+        q:'v',
+        sort:'stars'
+      }
+    })
     .then(response =>{
       const result = response.data
       const {name,html_url} = result.items[0]
