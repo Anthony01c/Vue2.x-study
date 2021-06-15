@@ -8,13 +8,6 @@
 
 <script>
 export default {
-  //声明接收属性：更新数据的函数属性
-  props:{//属性名 属性值的类型 属性的必要性
-    addTodo:{
-      type:Function,
-      require:true
-    }
-  },
   data(){
     return{
       title:''
@@ -32,8 +25,8 @@ export default {
         title,
         completed:false
       }
-      //调用更新的函数，向todos中添加一个todo
-      this.addTodo(todo)
+      //分发自定义事件：addTodo
+      this.$emit('addTodo',todo)
 
       //清除输入
       this.title = ''

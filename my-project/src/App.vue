@@ -1,8 +1,9 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-        <Header :addTodo="addTodo"/>
-        <List :todos="todos"
+<!--       <Header @addTodo="addTodo"/>   &lt;!&ndash; //给当前的header对象绑定监听&ndash;&gt;-->
+      <Header ref='header'/>
+      <List :todos="todos"
               :deleteTodo="deleteTodo"
               :updateTodo="updateTodo"/>
         <Footer :todos="todos"
@@ -45,6 +46,7 @@ export default {
     }
   },
   mounted() {
+    this.$refs.header.$on('addTodo',this.addTodo)
     //模拟异步
     setTimeout(()=>{
       //读取local中保存的todos，更新数据
